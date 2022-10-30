@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:selfintro/model/myKeyword.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,11 +11,43 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-List<Map<String, String>> keywordCardListData = [
-  {'keyword': '성실', 'content': '성실합니다.'},
-  {'keyword': '책임감', 'content': '책임감이 강합니다.'},
-  {'keyword': '성장욕구', 'content': '성장욕구가 강합니다.'},
+List<MyKeyword> keywordCardListData = [
+  MyKeyword(keyword: '성실', content: '성실합니다.'),
+  MyKeyword(keyword: '책임감', content: '책임감이 강합니다.'),
+  MyKeyword(keyword: '성장욕구', content: '성장욕구가 강합니다.'),
 ];
+// List<Map<String, String>> keywordCardListData = [
+//   {'keyword': '성실', 'content': '성실합니다.'},
+//   {'keyword': '책임감', 'content': '책임감이 강합니다.'},
+//   {'keyword': '성장욕구', 'content': '성장욕구가 강합니다.'},
+// ];
+
+Future<void> _dialog(BuildContext context, MyKeyword myKeyword) async {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Scaffold(
+        body: Stack(
+          children: <Widget>[
+            InkWell(
+              onTap: () => Navigator.of(context).pop(),
+              child: Positioned(
+                right: 30,
+                top: 30,
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  alignment: Alignment.topRight,
+                  child: Icon(Icons.close),
+                ),
+              ),
+            ),
+            Text("body ${myKeyword.keyword}")
+          ],
+        ),
+      );
+    },
+  );
+}
 
 void openSelfIntroWeb(int i) async {
   const url0 = "http://cypf202110.s3-website.ap-northeast-2.amazonaws.com/";
@@ -42,6 +75,8 @@ void openSelfIntroWeb(int i) async {
 // } else {
 //   throw 'Could not launch $url';
 // }
+
+void openKeywordDetailPopup(item) {}
 
 class _HomeScreenState extends State<HomeScreen> {
   void showModal(BuildContext context) {
@@ -168,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     TextSpan(
                       style: TextStyle(color: Colors.grey),
                       children: [
-                        TextSpan(text: '86년생 o '),
+                        TextSpan(text: '86년생 '),
                         // WidgetSpan(child: Image.asset("assets/images/dot_center.png")),
                         TextSpan(text: '플러터 개발자'),
                       ],
@@ -386,61 +421,67 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     children: keywordCardListData.map((item) {
                       var idx = keywordCardListData.indexOf(item);
-                      return Card(
-                        color: Colors.green[300],
-                        child: Container(
-                            height: 200,
-                            width: 150,
-                            padding: EdgeInsets.all(12),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Container(
-                                    color: Colors.black,
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 4, vertical: 2),
-                                    child: Text(
-                                      "키워드${idx}",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 10),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    item['keyword']!,
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    height: 20,
-                                  ),
-                                  Expanded(child: Text(item['content']!)),
-                                  Container(
-                                    alignment: Alignment.bottomRight,
-                                    child: RotationTransition(
-                                      turns: AlwaysStoppedAnimation(90 / 365),
-                                      child: Container(
-                                        margin: EdgeInsets.all(10),
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                                fit: BoxFit.fill,
-                                                image: AssetImage(
-                                                    'assets/images/page_move_icon.png'))
-                                            // image: DecorationImage
-                                            // (image: Image.asset("/assets/images/self_img1.png")
-                                            // )
-                                            ),
+                      return InkWell(
+                        onTap: () {
+                          // openKeywordDetailPopup(item);
+                          _dialog(context, item);
+                        },
+                        child: Card(
+                          color: Colors.green[300],
+                          child: Container(
+                              height: 200,
+                              width: 150,
+                              padding: EdgeInsets.all(12),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Container(
+                                      color: Colors.black,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 4, vertical: 2),
+                                      child: Text(
+                                        "키워드${idx}",
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 10),
                                       ),
                                     ),
-                                  ),
-                                ])),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      item.keyword,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 20,
+                                    ),
+                                    Expanded(child: Text(item.content)),
+                                    Container(
+                                      alignment: Alignment.bottomRight,
+                                      child: RotationTransition(
+                                        turns: AlwaysStoppedAnimation(90 / 365),
+                                        child: Container(
+                                          margin: EdgeInsets.all(10),
+                                          width: 30,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                  fit: BoxFit.fill,
+                                                  image: AssetImage(
+                                                      'assets/images/page_move_icon.png'))
+                                              // image: DecorationImage
+                                              // (image: Image.asset("/assets/images/self_img1.png")
+                                              // )
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ])),
+                        ),
                       );
                     }).toList(),
                   )),
