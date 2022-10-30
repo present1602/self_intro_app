@@ -5,6 +5,7 @@ import 'package:selfintro/views/screens/git/GitScreen.dart';
 import 'package:selfintro/views/screens/motive/MotiveScreen.dart';
 import 'package:selfintro/views/screens/career/CareerScreen.dart';
 import 'package:selfintro/views/screens/home/HomeScreen.dart';
+import 'package:selfintro/views/widget/CustomAppBar.dart';
 
 class ViewController extends StatefulWidget {
   const ViewController({super.key});
@@ -18,26 +19,59 @@ void openGit() {
 }
 
 class _ViewControllerState extends State<ViewController> {
-  int _currentIndex = 0;
+  int _selectedIndex = 0;
+  String pageTitle = "";
+
   final List<dynamic> _children = [
     HomeScreen(),
     GitScreen(),
+    MotiveScreen(),
     CareerScreen(),
-    MotiveScreen()
   ];
 
   void _onTap(int index) {
     setState(() {
-      _currentIndex = index;
+      _selectedIndex = index;
+      if (_selectedIndex == 1) {
+        pageTitle = "깃허브";
+      }
+      if (_selectedIndex == 2) {
+        pageTitle = "지원동기";
+      }
+      if (_selectedIndex == 3) {
+        pageTitle = "경력기술서";
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _children[_currentIndex],
+      appBar: _selectedIndex == 0
+          ? null
+          : AppBar(
+              centerTitle: true,
+              title: Text(
+                pageTitle,
+                style: TextStyle(color: Colors.black),
+              ),
+              elevation: 0,
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                color: Colors.black,
+                onPressed: () {
+                  // Navigator.pop(context);
+                  // Navigator.of(context, rootNavigator: true).pop(context);
+                  Navigator.of(context).maybePop();
+                },
+              ),
+            ),
+      body: _children[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.red,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

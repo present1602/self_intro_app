@@ -13,8 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '자기소개 앱',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.red,
+          textTheme: TextTheme(
+            headline1: TextStyle(fontSize: 24),
+            headline2: TextStyle(fontSize: 22),
+            headline3: TextStyle(fontSize: 20),
+            headline4: TextStyle(fontSize: 18),
+          )),
       home: const ViewController(),
     );
   }

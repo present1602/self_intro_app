@@ -59,138 +59,141 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      Image.asset(
-        'assets/images/app_title.png',
-        height: 50,
-      ),
-      Padding(
-        padding: EdgeInsets.all(20),
-        child: Row(
-          children: [
-            GestureDetector(
-                onTap: () {
-                  showModal(context);
-                },
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          Image.asset(
+            'assets/images/app_title.png',
+            height: 50,
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      showModal(context);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Row(children: <Widget>[
+                        Text("이력서"),
+                        Icon(Icons.arrow_drop_down)
+                      ]),
+                    )),
+                Expanded(
+                  child: Container(),
+                ),
+                // Flexible(
+                //   fit: FlexFit.tight,
+                //   child: Container(),
+                // ),
+                Icon(Icons.alarm)
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 250,
+            color: Colors.amber,
+            alignment: Alignment.center,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  "저를 소개합니다. :)",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text("육아크루의 개발팀! 나를 발견하다니 행운이다"),
+                // Image.asset(
+                //   'assets/images/prof.png',
+                //   height: 100,
+                // ),
+                SizedBox(
+                  height: 5,
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(300.0),
+                  child: const Image(
+                    image: AssetImage('assets/images/prof.png'),
+                    height: 60,
+                  ),
+                ),
+                Text(
+                  "이름",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                Text.rich(
+                  TextSpan(
+                    style: TextStyle(color: Colors.grey),
+                    children: [
+                      TextSpan(text: '86년생'),
+                      WidgetSpan(child: Icon(Icons.radio_button_off)),
+                      TextSpan(text: '플러터 개발자'),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {},
+                    child: Container(
+                      child: Text("소개글 읽기"),
+                    ))
+              ],
+            ),
+          ),
+          Card(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(20),
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.grey,
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage('assets/images/self_img1.png'))
+                      // image: DecorationImage
+                      // (image: Image.asset("/assets/images/self_img1.png")
+                      // )
                       ),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Row(children: <Widget>[
-                    Text("이력서"),
-                    Icon(Icons.arrow_drop_down)
-                  ]),
-                )),
-            Expanded(
-              child: Container(),
-            ),
-            // Flexible(
-            //   fit: FlexFit.tight,
-            //   child: Container(),
-            // ),
-            Icon(Icons.alarm)
-          ],
-        ),
-      ),
-      Container(
-        width: double.infinity,
-        height: 250,
-        color: Colors.amber,
-        alignment: Alignment.center,
-        child: Column(
-          children: <Widget>[
-            Text(
-              "저를 소개합니다. :)",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text("육아크루의 개발팀! 나를 발견하다니 행운이다"),
-            // Image.asset(
-            //   'assets/images/prof.png',
-            //   height: 100,
-            // ),
-            SizedBox(
-              height: 5,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(300.0),
-              child: const Image(
-                image: AssetImage('assets/images/prof.png'),
-                height: 60,
-              ),
-            ),
-            Text(
-              "이름",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            Text.rich(
-              TextSpan(
-                style: TextStyle(color: Colors.grey),
-                children: [
-                  TextSpan(text: '86년생'),
-                  WidgetSpan(child: Icon(Icons.radio_button_off)),
-                  TextSpan(text: '플러터 개발자'),
-                ],
-              ),
-            ),
-            ElevatedButton(
-                onPressed: () {},
-                child: Container(
-                  child: Text("소개글 읽기"),
-                ))
-          ],
-        ),
-      ),
-      Card(
-        child: Row(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(20),
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('assets/images/self_img1.png'))
-                  // image: DecorationImage
-                  // (image: Image.asset("/assets/images/self_img1.png")
-                  // )
+                ),
+                SizedBox(width: 10),
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      Text("연락처 보기"),
+                      Text("합격 결과는 여기로 통보해주세요"),
+                    ],
                   ),
+                ),
+                Expanded(child: Container()),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: AssetImage('assets/images/page_move_icon.png'))
+                      // )
+                      ),
+                ),
+              ],
             ),
-            SizedBox(width: 10),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text("연락처 보기"),
-                  Text("합격 결과는 여기로 통보해주세요"),
-                ],
-              ),
-            ),
-            Expanded(child: Container()),
-            Container(
-              margin: EdgeInsets.all(10),
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('assets/images/page_move_icon.png'))
-                  // )
-                  ),
-            ),
-          ],
-        ),
-      )
-    ]);
+          )
+        ]),
+      ),
+    );
   }
 }

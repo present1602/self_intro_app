@@ -7,6 +7,6 @@ class CareerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("career screen");
+    return Text("body");
   }
 }
