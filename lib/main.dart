@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
-          'images/app_title.png',
+          'assets/images/app_title.png',
           height: 50,
         ),
         backgroundColor: Colors.white,
