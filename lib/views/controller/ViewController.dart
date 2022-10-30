@@ -46,51 +46,56 @@ class _ViewControllerState extends State<ViewController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _selectedIndex == 0
-          ? null
-          : AppBar(
-              centerTitle: true,
-              title: Text(
-                pageTitle,
-                style: TextStyle(color: Colors.black),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        appBar: _selectedIndex == 0
+            ? null
+            : AppBar(
+                centerTitle: true,
+                title: Text(
+                  pageTitle,
+                  style: TextStyle(color: Colors.black),
+                ),
+                elevation: 0,
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.black,
+                  onPressed: () {
+                    // Navigator.pop(context);
+                    // Navigator.of(context, rootNavigator: true).pop(context);
+                    Navigator.of(context).maybePop();
+                  },
+                ),
               ),
-              elevation: 0,
-              backgroundColor: Colors.white,
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back),
-                color: Colors.black,
-                onPressed: () {
-                  // Navigator.pop(context);
-                  // Navigator.of(context, rootNavigator: true).pop(context);
-                  Navigator.of(context).maybePop();
-                },
-              ),
+        body: _children[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.red,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '홈',
             ),
-      body: _children[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '홈',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '깃허브',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: '지원동기',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_outlined),
-            label: '경력기술서',
-          ),
-        ],
-        onTap: _onTap,
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '깃허브',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat),
+              label: '지원동기',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle_outlined),
+              label: '경력기술서',
+            ),
+          ],
+          onTap: _onTap,
+        ),
       ),
     );
   }

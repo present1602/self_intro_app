@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:selfintro/views/controller/ViewController.dart';
+import 'package:selfintro/views/screens/career/CareerScreen.dart';
+import 'package:selfintro/views/screens/git/GitScreen.dart';
+import 'package:selfintro/views/screens/home/HomeScreen.dart';
+import 'package:selfintro/views/screens/motive/MotiveScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +24,14 @@ class MyApp extends StatelessWidget {
             headline3: TextStyle(fontSize: 20),
             headline4: TextStyle(fontSize: 18),
           )),
-      home: const ViewController(),
+      home: ViewController(),
+      // initialRoute: "/home",
+      // routes: {
+      //   "/home": (context) => ViewController(),
+      //   "/git": (context) => GitScreen(),
+      //   "/motive": (context) => MotiveScreen(),
+      //   "/career": (context) => CareerScreen(),
+      // },
     );
   }
 }
