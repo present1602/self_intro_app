@@ -96,7 +96,58 @@ class _HomeScreenState extends State<HomeScreen> {
             Icon(Icons.alarm)
           ],
         ),
-      )
+      ),
+      Container(
+        width: double.infinity,
+        height: 250,
+        color: Colors.amber,
+        alignment: Alignment.center,
+        child: Column(
+          children: <Widget>[
+            Text(
+              "저를 소개합니다. :)",
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text("육아크루의 개발팀! 나를 발견하다니 행운이다"),
+            // Image.asset(
+            //   'assets/images/prof.png',
+            //   height: 100,
+            // ),
+            SizedBox(
+              height: 5,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(300.0),
+              child: const Image(
+                image: AssetImage('assets/images/prof.png'),
+                height: 60,
+              ),
+            ),
+            Text(
+              "이름",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            Text.rich(
+              TextSpan(
+                style: TextStyle(color: Colors.grey),
+                children: [
+                  TextSpan(text: '86년생'),
+                  WidgetSpan(child: Icon(Icons.radio_button_off)),
+                  TextSpan(text: '플러터 개발자'),
+                ],
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {},
+                child: Container(
+                  child: Text("소개글 읽기"),
+                ))
+          ],
+        ),
+      ),
     ]);
   }
 }
