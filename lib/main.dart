@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:selfintro/views/screens/career/IntroScreen.dart';
-import 'package:selfintro/views/screens/controller/ViewController.dart';
+import 'package:selfintro/views/controller/ViewController.dart';
 
 void main() {
   runApp(const MyApp());

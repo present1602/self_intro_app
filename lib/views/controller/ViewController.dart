@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:selfintro/views/screens/career/CareerScreen.dart';
-import 'package:selfintro/views/screens/career/HomeScreen.dart';
+import 'package:selfintro/views/screens/home/HomeScreen.dart';
 
 class ViewController extends StatefulWidget {
   const ViewController({super.key});
