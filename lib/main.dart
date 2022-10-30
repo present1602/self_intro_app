@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:selfintro/views/home/HomeScreen.dart';
+import 'package:selfintro/views/screens/career/IntroScreen.dart';
+import 'package:selfintro/views/screens/controller/ViewController.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(title: 'Flutter Demo Home Page'),
+      home: const ViewController(),
     );
   }
 }
