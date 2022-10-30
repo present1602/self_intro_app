@@ -57,23 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       context: context,
                       tiles: [
                         ListTile(
-                          title: GestureDetector(child: Text('이력서')),
+                          title: GestureDetector(
+                              onTap: () {
+                                openSelfIntroWeb(0);
+                              },
+                              child: Text('이력서')),
                         ),
                         ListTile(
+                          onTap: () {
+                            openSelfIntroWeb(1);
+                          },
                           title: Text('노션'),
                         ),
                       ]).toList(),
-                )
-                // child: ListView.builder(
-                //     itemCount: 2,
-                //     itemBuilder: (c, i) {
-                //       return GestureDetector(
-                //           onTap: () {
-                //             openSelfIntroWeb(i);
-                //           },
-                //           child: Text(i == 0 ? "이력서" : "노션", style: TextStyle(font),));
-                //     }),
-                )));
+                ))));
   }
 
   @override
@@ -411,7 +408,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(
                                     height: 5,
                                   ),
-                                  Text(item['keyword']!),
+                                  Text(
+                                    item['keyword']!,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   Divider(
                                     color: Colors.black,
                                     height: 20,
