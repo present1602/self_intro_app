@@ -64,14 +64,38 @@ class _HomeScreenState extends State<HomeScreen> {
         'assets/images/app_title.png',
         height: 50,
       ),
-      Row(
-        children: [
-          GestureDetector(
-              onTap: () {
-                showModal(context);
-              },
-              child: Text("이력서")),
-        ],
+      Padding(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          children: [
+            GestureDetector(
+                onTap: () {
+                  showModal(context);
+                },
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.grey,
+                      ),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Row(children: <Widget>[
+                    Text("이력서"),
+                    Icon(Icons.arrow_drop_down)
+                  ]),
+                )),
+            Expanded(
+              child: Container(),
+            ),
+            // Flexible(
+            //   fit: FlexFit.tight,
+            //   child: Container(),
+            // ),
+            Icon(Icons.alarm)
+          ],
+        ),
       )
     ]);
   }
