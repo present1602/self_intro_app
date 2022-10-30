@@ -148,6 +148,49 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      Card(
+        child: Row(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(20),
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/images/self_img1.png'))
+                  // image: DecorationImage
+                  // (image: Image.asset("/assets/images/self_img1.png")
+                  // )
+                  ),
+            ),
+            SizedBox(width: 10),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("연락처 보기"),
+                  Text("합격 결과는 여기로 통보해주세요"),
+                ],
+              ),
+            ),
+            Expanded(child: Container()),
+            Container(
+              margin: EdgeInsets.all(10),
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/images/page_move_icon.png'))
+                  // )
+                  ),
+            ),
+          ],
+        ),
+      )
     ]);
   }
 }
