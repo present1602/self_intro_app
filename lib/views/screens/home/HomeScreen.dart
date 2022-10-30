@@ -73,287 +73,310 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(children: <Widget>[
-          Image.asset(
-            'assets/images/app_title.png',
-            height: 50,
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      showModal(context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.grey,
-                          ),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Row(children: <Widget>[
-                        Text("이력서"),
-                        Icon(Icons.arrow_drop_down)
-                      ]),
-                    )),
-                Expanded(
-                  child: Container(),
-                ),
-                // Flexible(
-                //   fit: FlexFit.tight,
-                //   child: Container(),
-                // ),
-                Container(
-                    width: 25,
-                    child: Image.asset('assets/images/bell_icon.png'))
-              ],
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Column(children: <Widget>[
+            Image.asset(
+              'assets/images/app_title.png',
+              height: 50,
             ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 300,
-            color: Colors.amber,
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "저를 소개합니다. :)",
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text("육아크루의 개발팀! 나를 발견하다니 행운이다"),
-                // Image.asset(
-                //   'assets/images/prof.png',
-                //   height: 100,
-                // ),
-                SizedBox(
-                  height: 5,
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(300.0),
-                  child: const Image(
-                    image: AssetImage('assets/images/prof.png'),
-                    height: 60,
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        showModal(context);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(children: <Widget>[
+                          Text("이력서"),
+                          Icon(Icons.arrow_drop_down)
+                        ]),
+                      )),
+                  Expanded(
+                    child: Container(),
                   ),
-                ),
+                  // Flexible(
+                  //   fit: FlexFit.tight,
+                  //   child: Container(),
+                  // ),
+                  Container(
+                      width: 25,
+                      child: Image.asset('assets/images/bell_icon.png'))
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 300,
+              color: Colors.amber,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "저를 소개합니다. :)",
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text("육아크루의 개발팀! 나를 발견하다니 행운이다"),
+                  // Image.asset(
+                  //   'assets/images/prof.png',
+                  //   height: 100,
+                  // ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(300.0),
+                    child: const Image(
+                      image: AssetImage('assets/images/prof.png'),
+                      height: 60,
+                    ),
+                  ),
 
-                Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text(
-                    "김치연",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text(
+                      "김치연",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                Text.rich(
-                  TextSpan(
-                    style: TextStyle(color: Colors.grey),
-                    children: [
-                      TextSpan(text: '86년생 o '),
-                      // WidgetSpan(child: Image.asset("assets/images/dot_center.png")),
-                      TextSpan(text: '플러터 개발자'),
-                    ],
+                  Text.rich(
+                    TextSpan(
+                      style: TextStyle(color: Colors.grey),
+                      children: [
+                        TextSpan(text: '86년생 o '),
+                        // WidgetSpan(child: Image.asset("assets/images/dot_center.png")),
+                        TextSpan(text: '플러터 개발자'),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      showModalBottomSheet<void>(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Container(
-                              height: 500,
-                              color: Colors.transparent,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.yellow,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(30),
-                                        topRight: Radius.circular(30))),
-                                child: Padding(
-                                  padding: EdgeInsets.all(30),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      const Text('기획이 가능한 개발자입니다.'),
-                                      const Text(
-                                          '백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다. 백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.'),
-                                      // ElevatedButton(
-                                      //   child: const Text('Done!'),
-                                      //   onPressed: () => Navigator.pop(context),
-                                      // )
-                                    ],
+                  ElevatedButton(
+                      onPressed: () {
+                        showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                height: 500,
+                                color: Colors.transparent,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(30),
+                                          topRight: Radius.circular(30))),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(30),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        const Text('기획이 가능한 개발자입니다.'),
+                                        const Text(
+                                            '백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다. 백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.백엔드, 웹프론트엔드, 앱개발까지 고루 가능한 개발자입니다.'),
+                                        // ElevatedButton(
+                                        //   child: const Text('Done!'),
+                                        //   onPressed: () => Navigator.pop(context),
+                                        // )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          });
-                    },
-                    child: Container(
-                      child: Text("소개글 읽기"),
-                    ))
-              ],
-            ),
-          ),
-          Container(
-            height: 70,
-            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            child: Card(
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage('assets/images/self_img1.png'))
-                        // image: DecorationImage
-                        // (image: Image.asset("/assets/images/self_img1.png")
-                        // )
-                        ),
-                  ),
-                  SizedBox(width: 10),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "연락처 보기",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.blue),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Text("합격 결과는 여기로 통보해주세요"),
-                      ],
-                    ),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image:
-                                AssetImage('assets/images/page_move_icon.png'))
-                        // )
-                        ),
-                  ),
+                              );
+                            });
+                      },
+                      child: Container(
+                        child: Text("소개글 읽기"),
+                      ))
                 ],
               ),
             ),
-          ),
-          Container(
-            height: 70,
-            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            child: Card(
-              child: Row(
-                children: <Widget>[
-                  SizedBox(width: 20),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "개발실력이 더 궁금하다면?",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("깃허브에서 커밋 로그를 보실 수 있어요!"),
-                      ],
+            Container(
+              height: 70,
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              child: Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/images/self_img1.png'))
+                          // image: DecorationImage
+                          // (image: Image.asset("/assets/images/self_img1.png")
+                          // )
+                          ),
                     ),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image:
-                                AssetImage('assets/images/page_move_icon.png'))
-                        // )
-                        ),
-                  ),
-                ],
+                    SizedBox(width: 10),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "연락처 보기",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text("합격 결과는 여기로 통보해주세요"),
+                        ],
+                      ),
+                    ),
+                    Expanded(child: Container()),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'assets/images/page_move_icon.png'))
+                          // )
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            height: 70,
-            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-            child: Card(
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage('assets/images/self_img2.png'))
-                        // image: DecorationImage
-                        // (image: Image.asset("/assets/images/self_img1.png")
-                        // )
-                        ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "육아크루 지원동기",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("이런 일을 하고 싶습니다."),
-                      ],
+            Container(
+              height: 70,
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              child: Card(
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: 20),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "개발실력이 더 궁금하다면?",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text("깃허브에서 커밋 로그를 보실 수 있어요!"),
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(child: Container()),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image:
-                                AssetImage('assets/images/page_move_icon.png'))
-                        // )
-                        ),
-                  ),
-                ],
+                    Expanded(child: Container()),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'assets/images/page_move_icon.png'))
+                          // )
+                          ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ]),
+            Container(
+              height: 70,
+              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+              child: Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/images/self_img2.png'))
+                          // image: DecorationImage
+                          // (image: Image.asset("/assets/images/self_img1.png")
+                          // )
+                          ),
+                    ),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "육아크루 지원동기",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text("이런 일을 하고 싶습니다."),
+                        ],
+                      ),
+                    ),
+                    Expanded(child: Container()),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                  'assets/images/page_move_icon.png'))
+                          // )
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "My Keywords2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+
+            // Text(
+            //   "My Keywords",
+            //   textAlign: TextAlign.left,
+            //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            // ),
+          ]),
+        ),
       ),
     );
   }
