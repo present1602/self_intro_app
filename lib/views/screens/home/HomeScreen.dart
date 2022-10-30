@@ -10,6 +10,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+List<Map<String, String>> keywordCardListData = [
+  {'keyword': '성실', 'content': '성실합니다.'},
+  {'keyword': '성실', 'content': '책임감이 강합니다.'},
+];
+
 void openSelfIntroWeb(int i) async {
   const url0 = "http://cypf202110.s3-website.ap-northeast-2.amazonaws.com/";
   const url1 =
@@ -76,10 +81,16 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: SingleChildScrollView(
-          child: Column(children: <Widget>[
-            Image.asset(
-              'assets/images/app_title.png',
-              height: 50,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+                  Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              alignment: Alignment.center,
+              child: Image.asset(
+                'assets/images/app_title.png',
+                height: 50,
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(20),
@@ -359,22 +370,39 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 15,
+              height: 25,
             ),
             Container(
               alignment: Alignment.topLeft,
+              margin: EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                "My Keywords2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2rds2 Keywords2Keywords2Keywords2Keywords2Keywords2Keywords2",
+                "My Keywords",
                 textAlign: TextAlign.left,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-
-            // Text(
-            //   "My Keywords",
-            //   textAlign: TextAlign.left,
-            //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            // ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: keywordCardListData.map((item) {
+                      return Card(
+                        child: Container(
+                            height: 200,
+                            width: 150,
+                            padding: EdgeInsets.all(15),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(item['keyword']!),
+                                  Divider(),
+                                  Text(item['content']!),
+                                ])),
+                      );
+                    }).toList(),
+                  )),
+            )
           ]),
         ),
       ),
