@@ -12,7 +12,8 @@ class HomeScreen extends StatefulWidget {
 
 List<Map<String, String>> keywordCardListData = [
   {'keyword': '성실', 'content': '성실합니다.'},
-  {'keyword': '성실', 'content': '책임감이 강합니다.'},
+  {'keyword': '책임감', 'content': '책임감이 강합니다.'},
+  {'keyword': '성장욕구', 'content': '성장욕구가 강합니다.'},
 ];
 
 void openSelfIntroWeb(int i) async {
@@ -382,22 +383,61 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(15),
               child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: keywordCardListData.map((item) {
+                      var idx = keywordCardListData.indexOf(item);
                       return Card(
+                        color: Colors.green[300],
                         child: Container(
                             height: 200,
                             width: 150,
-                            padding: EdgeInsets.all(15),
+                            padding: EdgeInsets.all(12),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
+                                  Container(
+                                    color: Colors.black,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 4, vertical: 2),
+                                    child: Text(
+                                      "키워드${idx}",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 10),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
                                   Text(item['keyword']!),
-                                  Divider(),
-                                  Text(item['content']!),
+                                  Divider(
+                                    color: Colors.black,
+                                    height: 20,
+                                  ),
+                                  Expanded(child: Text(item['content']!)),
+                                  Container(
+                                    alignment: Alignment.bottomRight,
+                                    child: RotationTransition(
+                                      turns: AlwaysStoppedAnimation(90 / 365),
+                                      child: Container(
+                                        margin: EdgeInsets.all(10),
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                fit: BoxFit.fill,
+                                                image: AssetImage(
+                                                    'assets/images/page_move_icon.png'))
+                                            // image: DecorationImage
+                                            // (image: Image.asset("/assets/images/self_img1.png")
+                                            // )
+                                            ),
+                                      ),
+                                    ),
+                                  ),
                                 ])),
                       );
                     }).toList(),
