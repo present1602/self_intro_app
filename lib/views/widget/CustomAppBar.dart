@@ -1,3 +1,42 @@
+import 'package:flutter/material.dart';
+
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  final String pageTitle;
+  final int pageIndex;
+
+  const CustomAppBar({required this.pageTitle, required this.pageIndex});
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+        title: Text(pageTitle),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.black,
+          onPressed: () {
+            // Navigator.of(context).maybePop();
+          },
+        ));
+  }
+}
+
+// AppBar(
+//   centerTitle: true,
+//   title: Text(pageTitle, style: TextStyle(color: Colors.black)),
+//   elevation: 0,
+//   backgroundColor: Colors.white,
+//   leading: IconButton(
+//     icon: Icon(Icons.arrow_back),
+//     color: Colors.black,
+//     onPressed: () {
+//       // Navigator.of(context).maybePop();
+//     },
+//   ),
+// ),
+
 // import 'package:flutter/material.dart';
 
 // class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
