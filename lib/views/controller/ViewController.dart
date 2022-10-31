@@ -81,67 +81,6 @@ class _ViewControllerState extends State<ViewController> {
         return isFirstRouteInCurrentTab;
       },
       child: Scaffold(
-        appBar: _selectedIndex == 0
-            ? null
-            :
-            // CustomAppBar(pageTitle: pageTitle, pageIndex: _selectedIndex),
-            // _selectedIndex != 1
-            //     ?
-            // AppBar(
-            //     centerTitle: true,
-            //     title:
-            //         Text(pageTitle, style: TextStyle(color: Colors.black)),
-            //     elevation: 0,
-            //     backgroundColor: Colors.white,
-            //     leading: IconButton(
-            //       icon: Icon(Icons.arrow_back),
-            //       color: Colors.black,
-            //       onPressed: () {},
-            //     ),
-            //   )
-            // :
-            AppBar(
-                elevation: 0,
-                backgroundColor: Colors.white,
-                title: Row(
-                  children: [
-                    SizedBox(
-                      width: 100,
-                      child: Row(
-                        children: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.arrow_back),
-                            color: Colors.black,
-                            onPressed: () {},
-                          ),
-                          _selectedIndex == 1
-                              ? IconButton(
-                                  icon: Icon(Icons.home),
-                                  color: Colors.black,
-                                  onPressed: () {},
-                                )
-                              : Container()
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Text(
-                          pageTitle,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 100,
-                    ),
-                  ],
-                ),
-              ),
-        // body: _children[_selectedIndex],
-
         body: Stack(
           children: <Widget>[
             _buildOffstageNavigator(TabItem.home),
@@ -150,7 +89,6 @@ class _ViewControllerState extends State<ViewController> {
             _buildOffstageNavigator(TabItem.career),
           ],
         ),
-
         bottomNavigationBar:
             BottomNavigation(currentTab: _currentTab, onSelectTab: _selectTab),
         floatingActionButton: FloatingActionButton(
