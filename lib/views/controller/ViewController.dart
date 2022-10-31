@@ -55,22 +55,61 @@ class _ViewControllerState extends State<ViewController> {
       child: Scaffold(
         appBar: _selectedIndex == 0
             ? null
-            : AppBar(
-                centerTitle: true,
-                title: Text(
-                  pageTitle,
-                  style: TextStyle(color: Colors.black),
-                ),
+            :
+            // CustomAppBar(pageTitle: pageTitle, pageIndex: _selectedIndex),
+            // _selectedIndex != 1
+            //     ?
+            // AppBar(
+            //     centerTitle: true,
+            //     title:
+            //         Text(pageTitle, style: TextStyle(color: Colors.black)),
+            //     elevation: 0,
+            //     backgroundColor: Colors.white,
+            //     leading: IconButton(
+            //       icon: Icon(Icons.arrow_back),
+            //       color: Colors.black,
+            //       onPressed: () {},
+            //     ),
+            //   )
+            // :
+            AppBar(
                 elevation: 0,
                 backgroundColor: Colors.white,
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  color: Colors.black,
-                  onPressed: () {
-                    // Navigator.pop(context);
-                    // Navigator.of(context, rootNavigator: true).pop(context);
-                    Navigator.of(context).maybePop();
-                  },
+                title: Row(
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.arrow_back),
+                            color: Colors.black,
+                            onPressed: () {},
+                          ),
+                          _selectedIndex == 1
+                              ? IconButton(
+                                  icon: Icon(Icons.home),
+                                  color: Colors.black,
+                                  onPressed: () {},
+                                )
+                              : Container()
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          pageTitle,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 100,
+                    ),
+                  ],
                 ),
               ),
         body: _children[_selectedIndex],
