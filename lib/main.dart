@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
       title: '자기소개 앱',
       theme: ThemeData(
           primarySwatch: Colors.red,
+          bottomSheetTheme:
+              BottomSheetThemeData(backgroundColor: Colors.transparent),
           textTheme: TextTheme(
             headline1: TextStyle(fontSize: 24),
             headline2: TextStyle(fontSize: 22),
