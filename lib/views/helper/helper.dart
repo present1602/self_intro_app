@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void CommonBasicDialog(context, bodyText) {
   showDialog(
@@ -27,4 +28,14 @@ void CommonBasicDialog(context, bodyText) {
           ],
         );
       });
+}
+
+void OpenEmail(context) async {
+  String email = Uri.encodeComponent("present1306@naver.com");
+  Uri mail = Uri.parse("mailto:$email");
+  // Uri mail = Uri.parse("mailto:$email?subject=$subject&body=$body");
+  if (!await launchUrl(mail)) {
+    String message = "메일 앱을 열 수 없습니다";
+    CommonBasicDialog(context, message);
+  }
 }

@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:selfintro/model/myKeyword.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../helper/helper.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -145,8 +147,8 @@ void ContactDialog(context) {
                         ),
                         Expanded(
                           child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).pop();
+                            onTap: () async {
+                              OpenEmail(context);
                             },
                             child: Container(
                                 color: Colors.green[300],
