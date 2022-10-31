@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:selfintro/views/helper/helper.dart';
 import 'package:selfintro/views/screens/git/GitScreen.dart';
 import 'package:selfintro/views/screens/motive/MotiveScreen.dart';
 import 'package:selfintro/views/screens/career/CareerScreen.dart';
 import 'package:selfintro/views/screens/home/HomeScreen.dart';
 import 'package:selfintro/views/widget/CustomAppBar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewController extends StatefulWidget {
   const ViewController({super.key});
@@ -95,6 +97,18 @@ class _ViewControllerState extends State<ViewController> {
             ),
           ],
           onTap: _onTap,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            String email = Uri.encodeComponent("present1306@naver.com");
+            Uri mail = Uri.parse("mailto:$email");
+            // Uri mail = Uri.parse("mailto:$email?subject=$subject&body=$body");
+            if (!await launchUrl(mail)) {
+              String message = "메일 앱을 열 수 없습니다";
+              CommonBasicDialog(context, message);
+            }
+          },
+          child: const Icon(Icons.auto_fix_normal_outlined),
         ),
       ),
     );
