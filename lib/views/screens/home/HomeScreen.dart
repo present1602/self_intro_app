@@ -29,6 +29,37 @@ Future<void> _dialog(BuildContext context, MyKeyword myKeyword) async {
       return Scaffold(
         body: Stack(
           children: <Widget>[
+            Text("body ${myKeyword.keyword}"),
+            Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.green,
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(30, 70, 30, 30),
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300], shape: BoxShape.circle),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 7,
+                  child: Container(
+                    // alignment: Alignment.topLeft,
+                    margin: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(myKeyword.keyword),
+                        Divider(),
+                        Text(myKeyword.content)
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             InkWell(
               onTap: () => Navigator.of(context).pop(),
               child: Positioned(
@@ -41,7 +72,6 @@ Future<void> _dialog(BuildContext context, MyKeyword myKeyword) async {
                 ),
               ),
             ),
-            Text("body ${myKeyword.keyword}")
           ],
         ),
       );
