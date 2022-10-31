@@ -98,6 +98,85 @@ void openSelfIntroWeb(int i) async {
   }
 }
 
+void ContactDialog(context) {
+  showDialog(
+      context: context,
+      //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.zero,
+
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+
+          content: SizedBox(
+            height: MediaQuery.of(context).size.height / 5,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Text("이메일 : present1306@naver.com"),
+                          SizedBox(height: 15),
+                          Text("연락처 : 010-4760-8447"),
+                        ],
+                      ),
+                    )),
+
+                Expanded(
+                    flex: 1,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                                color: Colors.grey[100],
+                                alignment: Alignment.center,
+                                child: Text("닫기")),
+                          ),
+                        ),
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                                color: Colors.green[300],
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "연락하기",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ],
+                    ))
+                // Text(
+                //   "Dialog Content",
+                // ),
+              ],
+            ),
+          ),
+          // actions: <Widget>[
+          //   ElevatedButton(
+          //     child: new Text("확인"),
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //     },
+          //   ),
+          // ],
+        );
+      });
+}
+
 // _launchURLBrowser() async {
 //   const url = 'https://flutterdevs.com/';
 // if (await canLaunch(url)) {
@@ -239,6 +318,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+
                   ElevatedButton(
                       onPressed: () {
                         showModalBottomSheet<void>(
@@ -274,6 +357,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             });
                       },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 10)),
                       child: Container(
                         child: Text("소개글 읽기"),
                       ))
@@ -320,18 +407,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Expanded(child: Container()),
-                    Container(
-                      margin: EdgeInsets.all(10),
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                  'assets/images/page_move_icon.png'))
-                          // )
-                          ),
+                    InkWell(
+                      onTap: () {
+                        ContactDialog(context);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(
+                                    'assets/images/page_move_icon.png'))
+                            // )
+                            ),
+                      ),
                     ),
                   ],
                 ),
